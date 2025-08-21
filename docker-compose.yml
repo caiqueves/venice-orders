@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:
+  venice.orders.api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: venice_orders_api
+    ports:
+      - "5000:5000"
+    depends_on:
+      - venice.orders.sqlserver
+      - venice.orders.mongodb
+      - venice.orders.redis
+      - venice.orders.rabbitmq
+    environment:
+      - ConnectionStrings__SqlServer=Server=venice.orders.sqlserver;Database=venice;User Id=sa;Password=venice2025!;
+      - ConnectionStrings__MongoDb=mongodb://venice:venice@venice.orders.mongodb:27017
+      - ConnectionStrings__Redis=venice.orders.redis:6379
+      - ConnectionStrings__RabbitMq=amqp://venice:venice@venice.orders.rabbitmq:5672/
+
+  venice.orders.sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: venice_orders_sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "venice2025!"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - ./data/sqlserver:/var/opt/mssql
+
+  venice.orders.mongodb:
+    container_name: venice_orders_mongodb
+    image: mongo:8.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: venice
+      MONGO_INITDB_ROOT_PASSWORD: venice
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongodb:/data/db
+
+  venice.orders.redis:
+    container_name: venice_orders_redis 
+    image: redis:7.4.1-alpine     
+    ports:
+      - "6379:6379"
+  
+  venice.orders.rabbitmq:
+    container_name: venice_orders_rabbitmq
+    image: rabbitmq:3.13-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: venice
+      RABBITMQ_DEFAULT_PASS: venice
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: unless-stopped
