@@ -23,9 +23,9 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
  ## Camadas
 
 	* Domain: Entidades, agregados e interfaces de repositório
-	*Application: Commands, Queries, Handlers, DTOs, regras de negócio
-	*Infrastructure: Implementações de persistência (SQL Server e MongoDB)
-	*Api: Controllers, Requests, Validators, AutoMapper Profiles
+	* Application: Commands, Queries, Handlers, DTOs, regras de negócio
+	* Infrastructure: Implementações de persistência (SQL Server e MongoDB)
+	* Api: Controllers, Requests, Validators, AutoMapper Profiles
 
  ## Comunicação
 
@@ -36,7 +36,7 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
 	
  ### CQRS (Command Query Responsibility Segregation)
 	
-	* Justificativa:
+	* Justificativa
 	
 		* Separei operações de escrita (Commands) e leitura (Queries)
 		* Facilita escalabilidade e manutenção
@@ -44,7 +44,7 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
 		
  ### Repository Pattern
 	
-	* Justificativa:
+	* Justificativa
 		
 		* Abstrai acesso a dados
 		* Permite trocar o banco sem impactar Application/Domain
@@ -61,15 +61,13 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
 
 ## Rodando a aplicação
 
-   * 1 - Alterar a connection do SQL Server no arquivo docker-compose para conseguir o container funcionar
-   * Deve abrir o arquivo docker-compose na linha 46
+   * 1 - Alterar a connection do SQL Server no arquivo docker-compose para conseguir o container funcionar. Deve abrir o arquivo docker-compose na linha 46 
      
 	 ```bash
      - ConnectionStrings__Default=<Incluir aqui sua conexao>
 	 ```
-   * 2 - Rodar Migrations (SQL SERVER)
-      
-	* 2.1 Abrir o arquivo appsettings.json atualizar a chave ConnectionStrings__Default
+	 
+   * 2 - Rodar Migrations (SQL SERVER) - Abrir o arquivo appsettings.json atualizar a chave ConnectionStrings__Default
 		
 	  ```bash
 	   "ConnectionStrings": {
@@ -77,8 +75,7 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
 	   }
 	   ```
 	
-	* 2.2 Recomendo abrir o visual studio Console do gerenciador de pacotes
-	* 2.4 Selecionar o projeto venice.Orders.SqlServer
+	* 2.2 Recomendo abrir o visual studio Console do gerenciador de pacotes e selecionar o projeto venice.Orders.SqlServer
 	
 	 ```bash
 	   Update-Database
