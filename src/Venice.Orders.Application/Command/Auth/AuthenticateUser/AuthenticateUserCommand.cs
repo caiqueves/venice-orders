@@ -20,4 +20,10 @@ public class AuthenticateUserCommand : IRequest<string>
     /// Will be verified against the stored hashed password.
     /// </summary>
     public string Password { get; set; } = string.Empty;
+
+    public AuthenticateUserCommand(string email, string password)
+    {
+        Email = email; 
+        Password = password;
+    }
 }
