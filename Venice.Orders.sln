@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venice.Orders.Api", "src\Venice.Orders.Api\Venice.Orders.Api.csproj", "{5C0146D5-F0F1-470A-B802-7658B1C2B980}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venice.Orders.Application", "src\Venice.Orders.Application\Venice.Orders.Application.csproj", "{00C785BC-ACE6-4D06-84E2-A1E266D0A1AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venice.Orders.Domain", "src\Venice.Orders.Domain\Venice.Orders.Domain.csproj", "{03CDAFF1-5FB3-4EBB-BADB-E32AEBAFCD70}"
@@ -37,9 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venice.Orders.Redis", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - CrossCutting", "4 - CrossCutting", "{DA3B1B65-E706-4EAA-BB85-E1905AAFCDD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Venice.Orders.CrossCutting.IoC", "src\Venice.Orders.CrossCutting.IoC\Venice.Orders.CrossCutting.IoC.csproj", "{4D5F44D3-5081-43CD-AC29-B825EF4892BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venice.Orders.CrossCutting.IoC", "src\Venice.Orders.CrossCutting.IoC\Venice.Orders.CrossCutting.IoC.csproj", "{4D5F44D3-5081-43CD-AC29-B825EF4892BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Venice.Orders.CrossCutting.Shareable", "src\Venice.Orders.CrossCutting.Shareable\Venice.Orders.CrossCutting.Shareable.csproj", "{3ED2A4A6-06A0-4939-9BAC-E0B81E718B21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venice.Orders.CrossCutting.Shareable", "src\Venice.Orders.CrossCutting.Shareable\Venice.Orders.CrossCutting.Shareable.csproj", "{3ED2A4A6-06A0-4939-9BAC-E0B81E718B21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Venice.Orders.Api", "src\Venice.Orders.Api\Venice.Orders.Api.csproj", "{5FE8085E-20FD-4E7B-ADEF-543761F608BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +171,18 @@ Global
 		{3ED2A4A6-06A0-4939-9BAC-E0B81E718B21}.Release|x64.Build.0 = Release|Any CPU
 		{3ED2A4A6-06A0-4939-9BAC-E0B81E718B21}.Release|x86.ActiveCfg = Release|Any CPU
 		{3ED2A4A6-06A0-4939-9BAC-E0B81E718B21}.Release|x86.Build.0 = Release|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Debug|x64.Build.0 = Debug|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Debug|x86.Build.0 = Debug|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Release|x64.ActiveCfg = Release|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Release|x64.Build.0 = Release|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Release|x86.ActiveCfg = Release|Any CPU
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,6 +201,7 @@ Global
 		{FE68A86C-3493-482D-B4D2-2A18508741A8} = {850B9DE2-3AF5-4432-B805-7E1B85DEDDA7}
 		{4D5F44D3-5081-43CD-AC29-B825EF4892BA} = {DA3B1B65-E706-4EAA-BB85-E1905AAFCDD5}
 		{3ED2A4A6-06A0-4939-9BAC-E0B81E718B21} = {DA3B1B65-E706-4EAA-BB85-E1905AAFCDD5}
+		{5FE8085E-20FD-4E7B-ADEF-543761F608BA} = {3C8C94A2-ECDB-46BE-BA2A-B24C9CAA6679}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F5D5F1BF-37E6-4BFE-9BDC-FC47CEFF0FF6}

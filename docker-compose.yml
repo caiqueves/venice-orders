@@ -1,35 +1,6 @@
 version: '3.9'
 
 services:
-  venice.orders.api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: venice_orders_api
-    ports:
-      - "5000:5000"
-    depends_on:
-      - venice.orders.sqlserver
-      - venice.orders.mongodb
-      - venice.orders.redis
-      - venice.orders.rabbitmq
-    environment:
-      - ConnectionStrings__SqlServer=Server=venice.orders.sqlserver;Database=venice;User Id=sa;Password=venice2025!;
-      - ConnectionStrings__MongoDb=mongodb://venice:venice@venice.orders.mongodb:27017
-      - ConnectionStrings__Redis=venice.orders.redis:6379
-      - ConnectionStrings__RabbitMq=amqp://venice:venice@venice.orders.rabbitmq:5672/
-
-  venice.orders.sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: venice_orders_sqlserver
-    ports:
-      - "1433:1433"
-    environment:
-      SA_PASSWORD: "venice2025!"
-      ACCEPT_EULA: "Y"
-    volumes:
-      - ./data/sqlserver:/var/opt/mssql
-
   venice.orders.mongodb:
     container_name: venice_orders_mongodb
     image: mongo:8.0
@@ -57,3 +28,32 @@ services:
       - "5672:5672"
       - "15672:15672"
     restart: unless-stopped
+  
+    # API
+  venice.orders.api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: venice_orders_api
+    ports:
+      - "8080:5000"
+    depends_on:
+      - venice.orders.mongodb
+      - venice.orders.redis
+      - venice.orders.rabbitmq
+    environment:
+      # SQL Server
+      - ConnectionStrings__Default=Server=localhost;Database=OrdersDb;Trusted_Connection=True;TrustServerCertificate=True
+      # Redis
+      - RedisSettings__Connection=localhost:6379
+      # MongoDB
+      - MongoSettings__Connection=mongodb://venice:venice@localhost:27017
+      - MongoSettings__Database=OrdersDb
+      # RabbitMQ
+      - RabbitMqSettings__HostName=localhost
+      - RabbitMqSettings__Port=5672
+      - RabbitMqSettings__UserName=venice
+      - RabbitMqSettings__Password=venice
+      - RabbitMqSettings__VirtualHost=/
+      - RabbitMqSettings__Exchange=orders__venice_exchange
+      - RabbitMqSettings__Queue=orders_venice

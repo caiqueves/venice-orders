@@ -1,6 +1,3 @@
 ﻿namespace Venice.Orders.Application;
 
-public class Class1
-{
-
-}
+public interface IApplicationEntryPoint;

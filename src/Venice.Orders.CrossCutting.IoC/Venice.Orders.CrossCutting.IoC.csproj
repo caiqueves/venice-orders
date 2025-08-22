@@ -3,7 +3,23 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
+    <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Venice.Orders.Application\Venice.Orders.Application.csproj" />
+    <ProjectReference Include="..\Venice.Orders.Domain\Venice.Orders.Domain.csproj" />
+    <ProjectReference Include="..\Venice.Orders.MongoDB\Venice.Orders.MongoDB.csproj" />
+    <ProjectReference Include="..\Venice.Orders.RabbitMQ\Venice.Orders.RabbitMQ.csproj" />
+    <ProjectReference Include="..\Venice.Orders.Redis\Venice.Orders.Redis.csproj" />
+    <ProjectReference Include="..\Venice.Orders.SqlServer\Venice.Orders.SqlServer.csproj" />
+  </ItemGroup>
 
 </Project>
