@@ -20,16 +20,16 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
  
  # Arquitetura
  
- ## Camadas:
+ ## Camadas
 
 	* Domain: Entidades, agregados e interfaces de repositório
 	*Application: Commands, Queries, Handlers, DTOs, regras de negócio
 	*Infrastructure: Implementações de persistência (SQL Server e MongoDB)
 	*Api: Controllers, Requests, Validators, AutoMapper Profiles
 
- ## Comunicação:
+ ## Comunicação
 
-   *API → Application via MediatR (CQRS)
+   * API → Application via MediatR (CQRS)
    * Handlers manipulam Commands/Queries de forma desacoplada
    
  ## Design Pattern adotado
@@ -45,10 +45,10 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
  ### Repository Pattern
 	
 	* Justificativa:
-	
-	* Abstrai acesso a dados
-	* Permite trocar o banco sem impactar Application/Domain
-	* Facilita testes unitários usando mocks
+		
+		* Abstrai acesso a dados
+		* Permite trocar o banco sem impactar Application/Domain
+		* Facilita testes unitários usando mocks
 
 # Como rodar localmente
 
@@ -62,7 +62,7 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
 ## Rodando a aplicação
 
    * 1 - Alterar a connection do SQL Server no arquivo docker-compose para conseguir o container funcionar
-	* Deve abrir o arquivo docker-compose na linha 46
+   * Deve abrir o arquivo docker-compose na linha 46
      
 	 ```bash
      - ConnectionStrings__Default=<Incluir aqui sua conexao>
@@ -75,14 +75,14 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
 	   "ConnectionStrings": {
 			"Default": <Incluir aqui sua conexao>
 	   }
-	  ```
+	   ```
 	
 	* 2.2 Recomendo abrir o visual studio Console do gerenciador de pacotes
 	* 2.4 Selecionar o projeto venice.Orders.SqlServer
 	
 	 ```bash
 	   Update-Database
-	 ```
+	   ```
    
    * 3 - Subir Containers
    
@@ -100,7 +100,7 @@ Sistema de gerenciamento de pedidos e usuários, com autenticação JWT, usando 
 	```bash
 	   cd test/Venice.Orders.Tests
 	   dotnet test
-	```
+	   ```
 	
 	* Testes incluem autenticação e criação de usuário
     * Cobrem cenários positivos e negativos

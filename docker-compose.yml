@@ -45,12 +45,12 @@ services:
       # SQL Server
       - ConnectionStrings__Default=Server=localhost;Database=OrdersDb;Trusted_Connection=True;TrustServerCertificate=True
       # Redis
-      - RedisSettings__Connection=localhost:6379
+      - RedisSettings__Connection=venice.orders.redis:6379
       # MongoDB
-      - MongoSettings__Connection=mongodb://venice:venice@localhost:27017
+      - MongoSettings__Connection=mongodb://venice:venice@venice.orders.mongodb:27017
       - MongoSettings__Database=OrdersDb
       # RabbitMQ
-      - RabbitMqSettings__HostName=localhost
+      - RabbitMqSettings__HostName=venice.orders.rabbitmq
       - RabbitMqSettings__Port=5672
       - RabbitMqSettings__UserName=venice
       - RabbitMqSettings__Password=venice
