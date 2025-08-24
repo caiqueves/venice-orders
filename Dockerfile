@@ -27,6 +27,9 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish Venice.Orders.Api/Venice.Orders.Api.csproj -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
+# Expõe porta 5000 dentro do container
+EXPOSE 5000
+
 # Runtime final (corrigido)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app

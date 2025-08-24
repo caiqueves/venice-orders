@@ -42,8 +42,11 @@ services:
       - venice.orders.redis
       - venice.orders.rabbitmq
     environment:
+      # ASP.NET
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
       # SQL Server
-      - ConnectionStrings__Default=Server=localhost;Database=OrdersDb;Trusted_Connection=True;TrustServerCertificate=True
+      - ConnectionStrings__Default=Server=host.docker.internal;Database=OrdersDb;User Id=venice_user;Password=Venice2025!;TrustServerCertificate=True
       # Redis
       - RedisSettings__Connection=venice.orders.redis:6379
       # MongoDB
@@ -57,3 +60,9 @@ services:
       - RabbitMqSettings__VirtualHost=/
       - RabbitMqSettings__Exchange=orders__venice_exchange
       - RabbitMqSettings__Queue=orders_venice
+      # JWT
+      - Jwt__Key=MinhaChaveSuperSecretaMuitoLongaDePeloMenos32Chars!
+      - Jwt__Issuer=venice.orders.api
+      - Jwt__Audience=venice.orders.api
+    volumes:
+      - ./keys:/root/.aspnet/DataProtection-Keys
